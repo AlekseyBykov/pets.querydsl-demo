@@ -28,4 +28,8 @@ public class CourseService {
                 )
                 .toList();
     }
+
+    public List<Course> findAllCourses() {
+        return courseRepository.findAll();
+    }
 }
