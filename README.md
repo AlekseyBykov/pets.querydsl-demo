@@ -1,22 +1,21 @@
 # querydsl-demo
 
-Sample Spring Boot project demonstrating QueryDSL usage.
+A **pet Spring Boot project** demonstrating QueryDSL usage with realistic practices.
 
 ## About
 
 This project demonstrates:
 
-- Generating QueryDSL Q-classes
-- Using Spring Data JPA with QueryDSL
-- A simple API for searching courses
+- Generating **QueryDSL Q-classes** for JPA entities.
+- Using **Spring Data JPA + QueryDSL** for type-safe dynamic queries.
+- A simple **REST API** for searching courses.
+- Integration tests with **Testcontainers** and PostgreSQL.
 
 ## How it works
 
-QueryDSL mechanics:
-
-- QueryDSL generates **Q-classes** (meta-model classes) for JPA entities during build.
-- These classes are used for **type-safe queries** in repositories and services.
-- Generation is performed via Maven annotation processing during `mvn compile`.
+- QueryDSL generates **Q-classes** (meta-models) for JPA entities during build time via Maven annotation processing.
+- These classes are used for **type-safe queries** in repositories and services, avoiding fragile string-based queries.
+- Tests use **Testcontainers**, running PostgreSQL in Docker to ensure realistic database testing.
 
 ## Tech stack
 
@@ -24,18 +23,37 @@ QueryDSL mechanics:
 - Spring Boot 2.7.x
 - Spring Data JPA
 - QueryDSL 5.x
-- H2 Database
-- JUnit 5 + MockMvc
+- PostgreSQL (via Testcontainers)
+- JUnit 5 + Spring Test
+
+## Running tests
+
+Ensure you have Docker running, then:
+
+```bash
+./run-tests.sh
+```
+
+This script executes Maven tests with Testcontainers support.
 
 ## Fork notes
 
-This project uses official QueryDSL (from Maven Central) without requiring a custom fork.
+This project uses **official QueryDSL** (from Maven Central) without requiring a custom fork.
 
 You might need a fork if:
 
-- You want to use QueryDSL SNAPSHOT or custom branches.
-- You plan to upgrade to Java 21 + Spring Boot 3.x, where official QueryDSL support is still partial.
-- You need to add custom APT generation modifications.
+- You require **SNAPSHOT** versions or unreleased features.
+- You plan to upgrade to **Java 21 + Spring Boot 3.x**, where official QueryDSL support is still partial.
+- You need to add custom **APT generation** modifications.
+
+## Important
+
+This project focuses **only on tests** as its primary use-case. There is no standalone application usage outside tests.
+
+## Planned
+
+- Advanced QueryDSL usage: dynamic predicates, projections (DTOs), pagination.
+- GraphQL integration example.
 
 ## License
 MIT License
