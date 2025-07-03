@@ -18,7 +18,7 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public List<String> findCoursesByName(String namePart) {
+    public List<Course> findCoursesByName(String namePart) {
         QCourse course = QCourse.course;
 
         BooleanExpression predicate = course.name.containsIgnoreCase(namePart);
@@ -26,7 +26,6 @@ public class CourseService {
         return StreamSupport.stream(
                         courseRepository.findAll(predicate).spliterator(), false
                 )
-                .map(Course::getName)
                 .toList();
     }
 }

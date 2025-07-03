@@ -1,5 +1,6 @@
 package dev.abykov.pets.querydsl.demo.controller;
 
+import dev.abykov.pets.querydsl.demo.entity.Course;
 import dev.abykov.pets.querydsl.demo.service.CourseService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,8 @@ public class CourseController {
 
     @GetMapping("/courses/search")
     public List<String> searchCourses(@RequestParam String q) {
-        return courseService.findCoursesByName(q);
+        return courseService.findCoursesByName(q).stream()
+                .map(Course::getName)
+                .toList();
     }
 }

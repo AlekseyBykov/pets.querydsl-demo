@@ -8,6 +8,12 @@ public class Course {
     public Course() {
     }
 
+    public Course(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
