@@ -6,5 +6,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
 public interface CourseRepository
         extends JpaRepository<Course, Long>,
-        QuerydslPredicateExecutor<Course> {
+        QuerydslPredicateExecutor<Course>,
+        CourseRepositoryCustom {
 }

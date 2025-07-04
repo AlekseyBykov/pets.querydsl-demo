@@ -19,7 +19,7 @@ public class CourseController {
 
     @GetMapping("/courses/search")
     public List<String> searchCourses(@RequestParam String q) {
-        return courseService.findCoursesByName(q).stream()
+        return courseService.findCoursesByNamePart(q).stream()
                 .map(Course::getName)
                 .toList();
     }

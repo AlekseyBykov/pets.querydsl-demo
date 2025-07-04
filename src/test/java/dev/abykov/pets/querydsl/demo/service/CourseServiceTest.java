@@ -52,7 +52,7 @@ class CourseServiceTest {
 
     @Test
     void searchCourses_shouldReturnMatchingCoursesForJava() {
-        List<Course> result = courseService.findCoursesByName("Java");
+        List<Course> result = courseService.findCoursesByNamePart("Java");
 
         assertThat(result)
                 .hasSize(1)
@@ -62,7 +62,7 @@ class CourseServiceTest {
 
     @Test
     void searchCourses_shouldReturnMatchingCoursesForSpring() {
-        List<Course> result = courseService.findCoursesByName("Spring");
+        List<Course> result = courseService.findCoursesByNamePart("Spring");
 
         assertThat(result)
                 .hasSize(1)
@@ -72,8 +72,28 @@ class CourseServiceTest {
 
     @Test
     void searchCourses_shouldReturnEmptyListWhenNoMatch() {
-        List<Course> result = courseService.findCoursesByName("Kotlin");
+        List<Course> result = courseService.findCoursesByNamePart("Kotlin");
 
         assertThat(result).isEmpty();
+    }
+
+    @Test
+    void findCoursesByExactName_shouldReturnSingleCourseWhenExists() {
+        List<Course> courses = courseService.findCoursesByExactName("Java Programming");
+
+        assertThat(courses)
+                .hasSize(1)
+                .extracting(Course::getName)
+                .containsExactly("Java Programming");
+
+        assertThat(courses.get(0).getDescription())
+                .isEqualTo("Learn the basics of Java programming language");
+    }
+
+    @Test
+    void findCoursesByExactName_shouldReturnEmptyListWhenNoMatch() {
+        List<Course> courses = courseService.findCoursesByExactName("Non Existing Course");
+
+        assertThat(courses).isEmpty();
     }
 }
