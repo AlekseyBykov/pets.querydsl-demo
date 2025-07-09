@@ -26,4 +26,28 @@ public class CourseService {
     public List<Course> findCoursesByExactName(String name) {
         return courseRepository.findByExactName(name);
     }
+
+    public List<Course> findByNameAndDescription(String name, String description) {
+        return courseRepository.findByNameAndDescription(name, description);
+    }
+
+    public List<Course> findByNameOrDescriptionContaining(String keyword) {
+        return courseRepository.findByNameOrDescriptionContaining(keyword);
+    }
+
+    public List<Course> searchCourses(String name, String description) {
+        return courseRepository.searchCourses(name, description);
+    }
+
+    public List<Course> findAllOrderByNameAsc() {
+        return courseRepository.findAllOrderByNameAsc();
+    }
+
+    public List<Course> findPaged(int page, int size) {
+        return courseRepository.findPaged(page, size);
+    }
+
+    public long countAll() {
+        return courseRepository.countAll();
+    }
 }

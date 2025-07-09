@@ -96,4 +96,43 @@ class CourseServiceTest {
 
         assertThat(courses).isEmpty();
     }
+
+    @Test
+    void findByNameAndDescription_shouldReturnMatchingCourse() {
+        List<Course> result = courseService.findByNameAndDescription(
+                "Java Programming",
+                "Learn the basics of Java programming language"
+        );
+        assertThat(result).hasSize(1);
+    }
+
+    @Test
+    void findByNameOrDescriptionContaining_shouldReturnCourses() {
+        List<Course> result = courseService.findByNameOrDescriptionContaining("Spring");
+        assertThat(result).extracting(Course::getName).contains("Spring Boot");
+    }
+
+    @Test
+    void searchCourses_shouldReturnCoursesMatchingBothFilters() {
+        List<Course> result = courseService.searchCourses("Java", "programming");
+        assertThat(result).extracting(Course::getName).contains("Java Programming");
+    }
+
+    @Test
+    void findAllOrderByNameAsc_shouldReturnCoursesSorted() {
+        List<Course> result = courseService.findAllOrderByNameAsc();
+        assertThat(result).isSortedAccordingTo((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+    }
+
+    @Test
+    void findPaged_shouldReturnLimitedCourses() {
+        List<Course> result = courseService.findPaged(0, 2);
+        assertThat(result).hasSizeLessThanOrEqualTo(2);
+    }
+
+    @Test
+    void countAll_shouldReturnTotalCount() {
+        long count = courseService.countAll();
+        assertThat(count).isGreaterThan(0);
+    }
 }
