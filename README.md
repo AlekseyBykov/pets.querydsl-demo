@@ -4,18 +4,18 @@ A **pet Spring Boot project** demonstrating QueryDSL usage with realistic practi
 
 ## About
 
-This project demonstrates:
+Demonstrates:
 
-- Generating **QueryDSL Q-classes** for JPA entities.
-- Using **Spring Data JPA + QueryDSL** for type-safe dynamic queries.
-- A simple **REST API** for searching courses.
-- Integration tests with **Testcontainers** and PostgreSQL.
+- Generation of QueryDSL Q-classes for JPA entities.
+- Usage of Spring Data JPA with QueryDSL for type-safe dynamic queries.
+- A simple REST API for searching courses.
+- Integration tests with Testcontainers and PostgreSQL.
 
 ## How it works
 
-- QueryDSL generates **Q-classes** (meta-models) for JPA entities during build time via Maven annotation processing.
-- These classes are used for **type-safe queries** in repositories and services, avoiding fragile string-based queries.
-- Tests use **Testcontainers**, running PostgreSQL in Docker to ensure realistic database testing.
+- QueryDSL generates Q-classes (meta-models) for JPA entities during build time via Maven annotation processing.
+- These classes enable type-safe queries in repositories and services, avoiding fragile string-based queries.
+- Tests run with Testcontainers, launching PostgreSQL in Docker for realistic database testing.
 
 ## Tech stack
 
@@ -38,22 +38,17 @@ This script executes Maven tests with Testcontainers support.
 
 ## Fork notes
 
-This project uses **official QueryDSL** (from Maven Central) without requiring a custom fork.
+Uses official QueryDSL from Maven Central without a custom fork.
 
-You might need a fork if:
+A fork may be required when:
 
-- You require **SNAPSHOT** versions or unreleased features.
-- You plan to upgrade to **Java 21 + Spring Boot 3.x**, where official QueryDSL support is still partial.
-- You need to add custom **APT generation** modifications.
+- Using SNAPSHOT versions or unreleased features.
+- Migrating to Java 21 and Spring Boot 3.x, where official QueryDSL support is partial.
+- Customizing APT generation.
 
 ## Important
 
-This project focuses **only on tests** as its primary use-case. There is no standalone application usage outside tests.
-
-## Planned
-
-- Advanced QueryDSL usage: dynamic predicates, projections (DTOs), pagination.
-- GraphQL integration example.
+Designed primarily for test demonstrations. No standalone application use outside tests.
 
 ## License
 MIT License
